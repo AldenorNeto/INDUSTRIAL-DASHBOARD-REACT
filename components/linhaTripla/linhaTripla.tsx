@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import {useRef, useLayoutEffect} from 'react';
 import Chart from "../SRCcharts";
+import style from './linhaTripla.module.scss'
 
 export default function LinhaTripla(props:any): JSX.Element{
     
@@ -9,9 +10,7 @@ export default function LinhaTripla(props:any): JSX.Element{
     useLayoutEffect(() => injecaoLinhas(refCanvas.current))
 
 return(
-<>
-<div className="linhasInjec"><canvas ref={refCanvas}></canvas></div>
-</>
+    <div className={style.linhasInjec}><canvas ref={refCanvas}></canvas></div>
 )
 
 function injecaoLinhas(Elemento: HTMLCanvasElement | null){
@@ -25,17 +24,17 @@ function injecaoLinhas(Elemento: HTMLCanvasElement | null){
     
     setInterval(() => {
       for (let index=0;index<3;index++){
-        injecao.data.datasets[index].data.shift() 
-        injecao.data.datasets[index].data.push(randomInj()+(20*(index+1))) 
-        injecao.update('none');
+          injecao.data.datasets[index].data.shift() 
+          injecao.data.datasets[index].data.push(randomInj()+(20*(index+1))) 
+          injecao.update('none');
       }
     },3000);
     
     var ctx = Elemento?.getContext("2d");
     if(ctx)ctx.canvas.height = 200;
     let injecao = new Chart(ctx,{
-          type:'line',
-          data:{
+        type:'line',
+        data:{
             labels: ['13','12','11','10','9','8','7','6','5','4','3','2','1','0'],
             datasets: [{
               label: "Ar Comprimido",

@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import {useRef, useLayoutEffect} from 'react';
 import Chart from "../SRCcharts";
+import style from './linhasBu.module.scss'
 
 export default function LinhasBU(props:any): JSX.Element{
     
@@ -11,14 +12,13 @@ export default function LinhasBU(props:any): JSX.Element{
 
 return(
 <>
-    <div className="linhaBUPai"><div className="linhas"><canvas ref={refCanvas}></canvas></div>
-    <div className="mediaSemana"><div>{props.grandeza}:<div className="valorlinhaBU"><section ref={refLegenda}></section><div>{props.unidade}</div></div></div>
-    <div>Média Semanal:<div className="valorlinhaBUmedia">{(props.media + Math.random()).toFixed(1)+' '+props.unidade}</div></div></div></div>
+    <div className={style.linhaBUPai}><div className={style.linhas}><canvas ref={refCanvas}></canvas></div>
+    <div className={style.mediaSemana}><div>{props.grandeza}:<div className={style.valorlinhaBU}><section ref={refLegenda}></section><div>{props.unidade}</div></div></div>
+    <div>Média Semanal:<div className={style.valorlinhaBUmedia}>{(props.media + Math.random()).toFixed(1)+' '+props.unidade}</div></div></div></div>
 </>
 )
 
-
-function montaGrafico(Elemento: HTMLCanvasElement | null, Legenda: any, ){
+function montaGrafico(Elemento: HTMLCanvasElement | null, Legenda: any): void{
 
     const randomConsu = (pesoindex: number) => (Math.random()*((pesoindex/5)))+pesoindex
     const randomConsuFor = (pesoInd: number) =>{
@@ -27,8 +27,7 @@ function montaGrafico(Elemento: HTMLCanvasElement | null, Legenda: any, ){
         return array
     }
     let randomConsumo
-    
-    for(let index = 0; index < 4; index++){
+    for(let index=0;index<4;index++){
         Legenda.innerText = randomConsu(props.media).toFixed(0)
     }
     

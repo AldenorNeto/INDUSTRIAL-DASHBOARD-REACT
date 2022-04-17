@@ -1,17 +1,15 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import {useRef, useLayoutEffect} from 'react';
 import Chart from "../SRCcharts";
+import style from './barrasPrevisao.module.scss'
 
 export default function BarrasPrevisao(props:any): JSX.Element{
     
     const refCanvas = useRef<HTMLCanvasElement>(null);
-
     useLayoutEffect(() => BarrasParent(refCanvas.current))
 
 return(
-<>
-<div id="barras"><canvas ref={refCanvas}></canvas></div>
-</>
+<div className={style.barras}><canvas ref={refCanvas}></canvas></div>
 )
 
 function BarrasParent(Elemento: HTMLCanvasElement | null) {

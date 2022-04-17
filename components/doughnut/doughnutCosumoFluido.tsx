@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import {useRef, useLayoutEffect} from 'react';
 import Chart from "../SRCcharts";
+import style from './doughnutCosumoFluido.module.scss'
 
 
 export default function GauciEletrico(props:any): JSX.Element{
@@ -11,7 +12,7 @@ export default function GauciEletrico(props:any): JSX.Element{
 
 return(
 <>
-<div className="doughDiv"><canvas ref={canvas}></canvas></div>
+<div className={style.doughDiv}><canvas ref={canvas}></canvas></div>
 </>
 )
 
